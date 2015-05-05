@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="/stylesheets/pages/pr_product.css" type="text/css">
+<div data-mz-pr-config="{%json_attribute model.config%}"></div>
+
+<input type="hidden" id="prProductDetail" value="1">
+
+
+{% if model.config.widgetType == "reviewSnippet" %}
+    <input type="hidden" id="productReviewSnippet" value="1">
+        <div id="reviewSnippetProduct" style="width:272px; float:left;">
+            {% require_script "widgets/powerreviews" %}
+         </div>
+{% endif %}  
+
+
+{% if model.config.widgetType == "reviewDisplay"%}
+
+     <input type="hidden" id="productReviewDisplay" value="1">
+     <div id="reviewDisplayProduct">
+           {% require_script "widgets/powerreviews" %}
+     </div>
+  
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

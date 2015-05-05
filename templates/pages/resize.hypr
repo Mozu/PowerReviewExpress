@@ -1,0 +1,20 @@
+<html>
+    <head>
+    <script type="text/javascript" src="https://cdn.powerreviews.com/repos/{{ pageContext.query.merchantGroupId }}/pr/pwr/engine/js/resize.js"></script>
+    </head>
+    <body>
+    </body>
+</html>
+
+{% header_content %}
+{% cms_resources %}
+{% include "modules/json-required-for-hyprlive" %}
+<script src="{{siteContext.cdnPrefix}}/js/require-min.js"></script>
+
+
+
+
+
+
+
+
