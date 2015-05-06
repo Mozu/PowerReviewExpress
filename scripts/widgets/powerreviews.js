@@ -5,23 +5,27 @@ define(['modules/jquery-mozu', 'hyprlive',"modules/backbone-mozu",  "modules/mod
         var merchantId;
         var siteId;
         var locale;
+        var prScript;
         function writeProductListBoxes() {
-                $('<script>')
-                                .attr('type', 'text/javascript')
-                                .text( 'var pr_locale=\"'+locale+'\";var pr_style_sheet=\"/stylesheets/widgets/pr_category_override.css\"')
-                                .appendTo('head');
-                var allInlineRatings = $('.pr-inline-rating');
-                allInlineRatings.each(function() {
-                    var $this = $(this);
-                    var productCode = $this.data('mzProductCode');
-                    var productUrl= $this.data('mzProductUrl');
-                    POWERREVIEWS.display.snippet({ write : function(content) {
-                                                $('#PRInlineRating-'+productCode).append(content); } },
-                                                { pr_page_id : productCode,
-                                                  pr_read_review : productUrl+'#reviewDisplayProduct',
-                                                  pr_snippet_min_reviews : 1,
-                                                  pr_write_review : '/write-a-review?pageId='+productCode+'&merchantGroupId='+merchantGroupId+'&merchantId='+merchantId+'&siteId='+siteId+'&locale='+locale});
-                });
+             prScript = "//cdn.powerreviews.com/repos/"+merchantGroupId+"/pr/pwr/engine/js/full.js";
+             $.getScript(prScript).done(function( script, textStatus ) {
+                    $('<script>')
+                                    .attr('type', 'text/javascript')
+                                    .text( 'var pr_locale=\"'+locale+'\";var pr_style_sheet=\"/stylesheets/widgets/pr_category_override.css\"')
+                                    .appendTo('head');
+                    var allInlineRatings = $('.pr-inline-rating');
+                    allInlineRatings.each(function() {
+                        var $this = $(this);
+                        var productCode = $this.data('mzProductCode');
+                        var productUrl= $this.data('mzProductUrl');
+                        POWERREVIEWS.display.snippet({ write : function(content) {
+                                                    $('#PRInlineRating-'+productCode).append(content); } },
+                                                    { pr_page_id : productCode,
+                                                      pr_read_review : productUrl+'#reviewDisplayProduct',
+                                                      pr_snippet_min_reviews : 1,
+                                                      pr_write_review : '/write-a-review?pageId='+productCode+'&merchantGroupId='+merchantGroupId+'&merchantId='+merchantId+'&siteId='+siteId+'&locale='+locale});
+                    });
+             });
         }
         $(document).ready(function () {
             var isWidget = $("#prProductDetail").val() == 1;
@@ -33,7 +37,7 @@ define(['modules/jquery-mozu', 'hyprlive',"modules/backbone-mozu",  "modules/mod
             siteId=Hypr.getThemeSetting('siteId');
             locale=Hypr.getThemeSetting('locale');
             
-            var prScript = "//cdn.powerreviews.com/repos/"+merchantGroupId+"/pr/pwr/engine/js/full.js";
+            prScript = "//cdn.powerreviews.com/repos/"+merchantGroupId+"/pr/pwr/engine/js/full.js";
             var prStyleSheet= "http://cdn.powerreviews.com/aux/"+merchantGroupId+"/"+merchantId+"/css/express.css";
            $.getScript(prScript).done(function( script, textStatus ) {
                 var currentProduct = ProductModels.Product.fromCurrent();
@@ -72,11 +76,13 @@ define(['modules/jquery-mozu', 'hyprlive',"modules/backbone-mozu",  "modules/mod
        
 	return {
 		writeProductListBoxes: function() {
-			return res.then(writeProductListBoxes);
+	        return writeProductListBoxes();
 		}
 	};
       
 });
+
+
 
 
 

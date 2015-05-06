@@ -1,7 +1,8 @@
 /**
  * Can be used on any Backbone.MozuModel that has had the paging mixin in mixins-paging added to it.
  */
-define(['modules/jquery-mozu', 'underscore', 'hyprlive', 'modules/backbone-mozu', "modules/models-faceting", "modules/views-productlists", "modules/views-paging", "widgets/powerreviews"], function($, _, Hypr, Backbone, FacetingModels, ProductListViews, PagingViews, PowerReviewsWidget) {
+define(['modules/jquery-mozu', 'underscore', 'hyprlive', 'modules/backbone-mozu', "modules/models-faceting", "modules/views-productlists", "modules/views-paging", "widgets/powerreviews"], 
+function($, _, Hypr, Backbone, FacetingModels, ProductListViews, PagingViews, PowerReviewsWidget) {
 
     function factory(conf) {
         var views = {},
