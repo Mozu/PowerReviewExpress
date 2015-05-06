@@ -1,7 +1,7 @@
 {
   "about": {
     "name": "PR Express Theme",
-    "extends": "core6",
+    "extends": "Core6",
     "isDesktop": true,
     "isMobile": false,
     "version": "0.1.0"
