@@ -7,8 +7,8 @@
     "version": "0.1.0"
   },
   "settings": {
-    "merchantGroupId": "17729",
-    "merchantId": "166793",
+    "merchantGroupId": "",
+    "merchantId": "",
     "siteId": "",
     "locale": "en_US"
   },
